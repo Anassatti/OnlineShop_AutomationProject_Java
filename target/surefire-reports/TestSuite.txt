@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 2, Errors: 0, Skipped: 4, Time elapsed: 1.292 s <<< FAILURE! - in TestSuite
+initialize(Ecommerice.HomePage)  Time elapsed: 1.068 s  <<< FAILURE!
+java.lang.NullPointerException
+	at Ecommerice.HomePage.initialize(HomePage.java:30)
+
+initilize(Ecommerice.ValidateForgetPassord)  Time elapsed: 1.069 s  <<< FAILURE!
+java.lang.NullPointerException
+	at Ecommerice.ValidateForgetPassord.initilize(ValidateForgetPassord.java:21)
+
