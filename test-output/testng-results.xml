@@ -2,16 +2,20 @@
 <testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-04-19T20:57:19 AST" name="Suite" finished-at="2022-04-19T20:59:02 AST" duration-ms="102709">
+  <suite started-at="2022-04-26T13:44:37 AST" name="Default suite" finished-at="2022-04-26T13:45:22 AST" duration-ms="45228">
     <groups>
     </groups>
-    <test started-at="2022-04-19T20:57:19 AST" name="Test" finished-at="2022-04-19T20:58:14 AST" duration-ms="54970">
-      <class name="Ecommerice.HomePage">
-        <test-method is-config="true" signature="initialize()[pri:0, instance:Ecommerice.HomePage@a37aefe]" started-at="2022-04-19T20:57:19 AST" name="initialize" finished-at="2022-04-19T20:57:34 AST" duration-ms="15465" status="PASS">
+    <test started-at="2022-04-26T13:44:37 AST" name="Default test" finished-at="2022-04-26T13:45:22 AST" duration-ms="45228">
+      <class name="pageObjects.HomePage">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:pageObjects.HomePage@71a8adcf]" started-at="2022-04-26T13:44:37 AST" name="initialize" finished-at="2022-04-26T13:44:44 AST" duration-ms="7844" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method signature="PageNavigation(java.lang.String,java.lang.String)[pri:0, instance:Ecommerice.HomePage@a37aefe]" started-at="2022-04-19T20:57:34 AST" name="PageNavigation" data-provider="getData" finished-at="2022-04-19T20:58:06 AST" duration-ms="31267" status="FAIL">
+        <test-method signature="ForgetPassword()[pri:0, instance:pageObjects.HomePage@71a8adcf]" started-at="2022-04-26T13:44:44 AST" name="ForgetPassword" finished-at="2022-04-26T13:44:49 AST" duration-ms="4930" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ForgetPassword -->
+        <test-method signature="PageNavigation(java.lang.String,java.lang.String)[pri:0, instance:pageObjects.HomePage@71a8adcf]" started-at="2022-04-26T13:44:49 AST" name="PageNavigation" data-provider="InputData" finished-at="2022-04-26T13:45:22 AST" duration-ms="32403" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -24,45 +28,18 @@
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.NoSuchElementException">
+          <exception class="java.lang.IndexOutOfBoundsException">
             <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"link text","selector":"Home"}
-  (Session info: chrome=100.0.4896.88)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'LAPTOP-AI0OB3V3', ip: '192.168.10.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.88, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\Users\anass\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:52877}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 75130bd592cdabe0682af0f0d69247f8
-*** Element info: {Using=link text, value=Home}]]>
+              <![CDATA[Index 1 out of bounds for length 0]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"link text","selector":"Home"}
-  (Session info: chrome=100.0.4896.88)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'LAPTOP-AI0OB3V3', ip: '192.168.10.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.88, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\Users\anass\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:52877}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 75130bd592cdabe0682af0f0d69247f8
-*** Element info: {Using=link text, value=Home}
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-at org.openqa.selenium.remote.RemoteWebDriver.findElementByLinkText(RemoteWebDriver.java:380)
-at org.openqa.selenium.By$ByLinkText.findElement(By.java:220)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-at pageObjects.Shopping.getHomepage(Shopping.java:37)
-at Ecommerice.HomePage.PageNavigation(HomePage.java:94)
+              <![CDATA[java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+at java.base/java.util.Objects.checkIndex(Objects.java:359)
+at java.base/java.util.ArrayList.get(ArrayList.java:427)
+at pageObjects.HomePage.PageNavigation(HomePage.java:106)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -93,31 +70,15 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          </exception> <!-- java.lang.IndexOutOfBoundsException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- PageNavigation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:Ecommerice.HomePage@a37aefe]" started-at="2022-04-19T20:58:14 AST" name="tearDown" finished-at="2022-04-19T20:58:14 AST" duration-ms="96" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:pageObjects.HomePage@71a8adcf]" started-at="2022-04-26T13:45:22 AST" name="tearDown" finished-at="2022-04-26T13:45:22 AST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- Ecommerice.HomePage -->
-    </test> <!-- Test -->
-    <test started-at="2022-04-19T20:58:15 AST" name="forgetpassword" finished-at="2022-04-19T20:59:02 AST" duration-ms="47056">
-      <class name="Ecommerice.ValidateForgetPassord">
-        <test-method is-config="true" signature="initilize()[pri:0, instance:Ecommerice.ValidateForgetPassord@398dada8]" started-at="2022-04-19T20:58:15 AST" name="initilize" finished-at="2022-04-19T20:58:41 AST" duration-ms="26547" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- initilize -->
-        <test-method signature="ForgetPasswordRetrieve()[pri:0, instance:Ecommerice.ValidateForgetPassord@398dada8]" started-at="2022-04-19T20:58:41 AST" name="ForgetPasswordRetrieve" finished-at="2022-04-19T20:59:02 AST" duration-ms="20438" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ForgetPasswordRetrieve -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:Ecommerice.ValidateForgetPassord@398dada8]" started-at="2022-04-19T20:59:02 AST" name="teardown" finished-at="2022-04-19T20:59:02 AST" duration-ms="68" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-      </class> <!-- Ecommerice.ValidateForgetPassord -->
-    </test> <!-- forgetpassword -->
-  </suite> <!-- Suite -->
+      </class> <!-- pageObjects.HomePage -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

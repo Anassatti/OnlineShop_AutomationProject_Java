@@ -34,8 +34,8 @@ public class JiraServiceProvider {
 	}
 	public void Attachment( String jiraID, File string ) throws JiraException
 	{
-		Issue fluent=jira.getIssue(jiraID);
-		fluent.addAttachment(string);
+		Issue addAttachment=jira.getIssue(jiraID);
+		addAttachment.addAttachment(string);
 			
 	}
 

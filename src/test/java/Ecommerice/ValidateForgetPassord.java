@@ -30,7 +30,7 @@ public class ValidateForgetPassord extends Base {
   
    forget.getSignin();
    forget.getForgetPassword().click();
-  //forget.AdduserEmail().sendKeys("anasssattis@gmail.com");
+  forget.AdduserEmail().sendKeys("anasssattis@gmail.com");
    forget.Retrieve().click();
    //String successMessage=forget.ConfirmationMesage().getText();
 	//Is menu displayed

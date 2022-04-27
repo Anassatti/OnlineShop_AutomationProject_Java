@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -40,16 +42,19 @@ public class Base {
 			 }
 			 
 			 driver= new ChromeDriver(options);
+			driver.manage().window().maximize();
 		}
 		else if (browserName.equals("firefox")) 
 		{
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\main\\java\\Resources\\geckodriver.exe");
 			 driver= new FirefoxDriver();
+			 driver.manage().window().maximize();
 		}
 		else if(browserName.equals("IE"))
 		{
 			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")+"\\src\\main\\java\\Resources\\msedgedriver.exe");
 			 driver= new EdgeDriver();
+			 driver.manage().window().maximize();
 		}
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		return driver;
@@ -72,6 +77,8 @@ public class Base {
 		File source=tk.getScreenshotAs(OutputType.FILE);
 		return source;
 	}
+	
+
 	
 	}
 

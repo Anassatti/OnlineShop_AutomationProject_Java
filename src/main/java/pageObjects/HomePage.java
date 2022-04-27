@@ -1,5 +1,6 @@
 package pageObjects;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,16 +8,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import Resources.TestData;
 import org.testng.annotations.Test;
 
 import Resources.Base;
 import Resources.JiraPolicy;
 
 public class HomePage extends Base{
-	
+
 
 	public static Logger log=LogManager.getLogger(Base.class.getName());
 	@BeforeTest
@@ -28,13 +31,13 @@ public class HomePage extends Base{
 		log.info("URL is opened");
 	}
 	@JiraPolicy(logTicketReady=true)
-	@Test(dataProvider="getData")
+	@Test(dataProvider="InputData", dataProviderClass=TestData.class)
 
 	public void PageNavigation(String email, String password) throws IOException, InterruptedException
 	{
 
 
-	//	Assert.assertEquals(driver.getTitle(), "My Store");
+		Assert.assertEquals(driver.getTitle(), "My Store");
 		log.info("Validate Homepage");
 		driver.manage().window().maximize();
 		//Invoke landing page
@@ -85,67 +88,74 @@ public class HomePage extends Base{
 		}
 		//Shopping
 		log.info("Shopping Start ");
+		ArrayList<String>productsItem= new ArrayList<String>();
+		productsItem.add("Faded Short Sleeve T-shirts");
+		ArrayList<String>prices= new ArrayList<String>();
 		Shopping shop=new Shopping(driver);
 		shop.getHomepage().click();
 		//Scroll Down 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,700)", "");
-		//Buy Item
-		shop.getItem().click();
-		WebElement featuredItem = driver.findElement(By.cssSelector("ul#homefeatured>li:nth-of-type(1) a.product_img_link"));
-		Actions a = new Actions(driver);
-		a.moveToElement(featuredItem, 1, 1).click().perform();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		shop.getAddItem().click();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		shop.getCheckOut();
-
-		//CheckOut
-		log.info("CheckOut");
-		CheckOut check=new CheckOut(driver);
-		String inStock= check.getInstock().getText();
-		if(inStock.equals("In stock"))
+		int size=shop.getProductLists().size();
+		for(int i=0;i<size;i++)
 		{
-			//	 check.getCountineCheckOut().click();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			shop.getProceedToCheckOut().click();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			check.getOrderComment().sendKeys("I am satisfy with way you display your products");
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			shop.getProceedToCheckOut().click();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			check.getTerms().click();
-			//driver.findElement(By.xpath("//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/form[1]/p[1]/button[1]/span[1]")).click();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			shop.getProceedToCheckOut().click();
-			//check.getTerms().click();
-			
-		//	check.getLastCheckup().click();			
-		   // check.getCountineCheckOut().click();
-		 //   check.getSignOut().click();
-			//   check.getContinueShopping().click();
-		}else
-		shop.getContinueShopping().click();
+			String products=shop.getProductLists().get(i).getText();
+			if(productsItem.contains(products))
+			{
 
-	}
-	@Test
-	public void ForgetPassword()
-	{
-		ForgetPassword forget= new ForgetPassword(driver);
-		forget.getSignin();
-		forget.getForgetPassword().click();
-		forget.AdduserEmail().sendKeys("anasssattis@gmail.com");
-		forget.Retrieve().click();
-		
-		
-	}
+				Actions mouseOverClick= new Actions(driver);
+				WebElement cartPosition=driver.findElement(By.cssSelector("img[class='replace-2x img-responsive']"));
+				mouseOverClick.moveToElement(cartPosition).perform();
+				shop.getAddItem().get(i).click();
+				prices.add(shop.getProductPrice().get(i).getText());
+				System.out.println("Price"+prices);
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				shop.getCheckOut();
 
-	@AfterTest
-	public void tearDown()
-	{
-	//	driver.close();
-	}
-	@DataProvider
+
+			}
+		}
+
+			//CheckOut
+			log.info("CheckOut");
+			CheckOut check=new CheckOut(driver);
+			String inStock= check.getInstock().getText();
+			if(inStock.equals("In stock"))
+			{
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				shop.getProceedToCheckOut().click();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				check.getOrderComment().sendKeys("I am satisfy with way you display your products");
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				shop.getProceedToCheckOut().click();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				check.getTerms().click();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				shop.getProceedToCheckOut().click();
+			}else
+			{
+				shop.getContinueShopping().click();
+			}
+
+		}
+		@Test
+		public void ForgetPassword()
+		{
+			ForgetPassword forget= new ForgetPassword(driver);
+			forget.getSignin();
+			forget.getForgetPassword().click();
+			forget.AdduserEmail().sendKeys("anasssattis@gmail.com");
+			forget.Retrieve().click();
+
+
+		}
+
+		@AfterTest
+		public void tearDown()
+		{
+			driver.close();
+		}
+		/*@DataProvider
 	public Object[][] getData()
 	{
 		Object[][] data=new Object[1][2];
@@ -154,6 +164,6 @@ public class HomePage extends Base{
 		data[0][0]="anasssattis@gmail.com";
 		data[0][1]="Anass";
 		return data;
-	}		 
+	}*/		 
 
-}
+	}

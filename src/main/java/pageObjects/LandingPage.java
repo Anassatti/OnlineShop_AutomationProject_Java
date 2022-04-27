@@ -10,30 +10,33 @@ public class LandingPage {
 	private By forgetPassword= By.xpath("//a[@title='Recover your forgotten password']");
 	private By title = By.tagName("title");
 
-	
-	  public LandingPage(WebDriver driver) {
-			// TODO Auto-generated constructor stub
-			  this.driver=driver;
-		}
-	  
-	  public WebElement getSignin()
-		{
-			return driver.findElement(signin);
-		}
-	  
-	  public ForgetPassword forGotPassword()
-	  {
-		  driver.findElement(forgetPassword).click();
+	public LandingPage(WebDriver driver) {
+		// TODO Auto-generated constructor stub
+		this.driver=driver;
+	}
+
+	public WebElement getSignin()
+	{
+		return driver.findElement(signin);
+	}
+
+	public ForgetPassword forGotPassword()
+	{
+		driver.findElement(forgetPassword).click();
 		return new ForgetPassword(driver);
-	  }
-	  public WebElement gettitle()
-	  {
-	  	  return driver.findElement(title);
-	  }
-	  public LoginPage getLogin()
-	  {
-		  LoginPage login=new LoginPage(driver);
-		   driver.findElement(signin).click();
-		  return login;
-	  }
+	}
+	public WebElement gettitle()
+	{
+		return driver.findElement(title);
+	}
+	public LoginPage getLogin()
+	{
+		LoginPage login=new LoginPage(driver);
+		login.getSignin().click();
+		return login;
+	}
+	
+
 }
+
+
